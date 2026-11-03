@@ -13,6 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/styles.css">
+  <link rel="preload" as="image" href="assets/ba-whitening-after-v2.webp">
+  <link rel="preload" as="image" href="assets/ba-whitening-before-v2.webp">
 
   <!-- LocalBusiness / Dentist Schema -->
   <script type="application/ld+json">
@@ -248,9 +250,9 @@
         <div class="ba-showcase reveal">
           <div class="ba-stage-card">
             <div class="ba-viewport" id="baViewport" style="--pos: 50%;" role="slider" aria-label="Before and After comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-              <img src="assets/ba-whitening-after-v2.webp" id="baAfterImg" class="ba-img-after" alt="After smile transformation at The Dental Den">
+              <img src="assets/ba-whitening-after-v2.webp" id="baAfterImg" class="ba-img-after" alt="After smile transformation at The Dental Den" decoding="async">
               <div class="ba-before-clip">
-                <img src="assets/ba-whitening-before-v2.webp" id="baBeforeImg" class="ba-img-before" alt="Before dental condition prior to treatment">
+                <img src="assets/ba-whitening-before-v2.webp" id="baBeforeImg" class="ba-img-before" alt="Before dental condition prior to treatment" decoding="async">
               </div>
               <span class="ba-tag before" id="baBeforeTag">Before</span>
               <span class="ba-tag after" id="baAfterTag">After</span>
@@ -815,8 +817,8 @@
               <div class="reviewer-meta">
                 <div class="reviewer-avatar">VM</div>
                 <div>
-                  <div class="reviewer-name">Vijendra Mhatre</div>
-                  <div class="reviewer-badge">Local Guide · Verified Google Review</div>
+                  <div class="reviewer-name"><span class="reviewer-name-text">Vijendra Mhatre</span></div>
+                  <div class="reviewer-badge"><span class="rev-time-pill">3 months ago</span></div>
                 </div>
               </div>
               <div class="review-stars">★★★★★</div>
@@ -833,8 +835,8 @@
               <div class="reviewer-meta">
                 <div class="reviewer-avatar">AG</div>
                 <div>
-                  <div class="reviewer-name">Aparna Ghate</div>
-                  <div class="reviewer-badge">Verified Patient · Google Review</div>
+                  <div class="reviewer-name"><span class="reviewer-name-text">Aparna Ghate</span></div>
+                  <div class="reviewer-badge"><span class="rev-time-pill">3 months ago</span></div>
                 </div>
               </div>
               <div class="review-stars">★★★★★</div>
@@ -851,8 +853,8 @@
               <div class="reviewer-meta">
                 <div class="reviewer-avatar">NG</div>
                 <div>
-                  <div class="reviewer-name">Nikita Gherde</div>
-                  <div class="reviewer-badge">Verified Patient · Google Review</div>
+                  <div class="reviewer-name"><span class="reviewer-name-text">Nikita Gherde</span></div>
+                  <div class="reviewer-badge"><span class="rev-time-pill">7 months ago</span></div>
                 </div>
               </div>
               <div class="review-stars">★★★★★</div>
@@ -869,8 +871,8 @@
               <div class="reviewer-meta">
                 <div class="reviewer-avatar">DC</div>
                 <div>
-                  <div class="reviewer-name">Dipayan Chatterjee</div>
-                  <div class="reviewer-badge">Local Guide · Verified Google Review</div>
+                  <div class="reviewer-name"><span class="reviewer-name-text">Dipayan Chatterjee</span></div>
+                  <div class="reviewer-badge"><span class="rev-time-pill">7 months ago</span></div>
                 </div>
               </div>
               <div class="review-stars">★★★★★</div>
@@ -887,8 +889,8 @@
               <div class="reviewer-meta">
                 <div class="reviewer-avatar">KK</div>
                 <div>
-                  <div class="reviewer-name">Komal Kalambe</div>
-                  <div class="reviewer-badge">Verified Patient · Google Review</div>
+                  <div class="reviewer-name"><span class="reviewer-name-text">Komal Kalambe</span></div>
+                  <div class="reviewer-badge"><span class="rev-time-pill">7 months ago</span></div>
                 </div>
               </div>
               <div class="review-stars">★★★★★</div>
@@ -905,8 +907,8 @@
               <div class="reviewer-meta">
                 <div class="reviewer-avatar">DP</div>
                 <div>
-                  <div class="reviewer-name">drpramod0409</div>
-                  <div class="reviewer-badge">Verified Patient · Google Review</div>
+                  <div class="reviewer-name"><span class="reviewer-name-text">drpramod0409</span></div>
+                  <div class="reviewer-badge"><span class="rev-time-pill">9 months ago</span></div>
                 </div>
               </div>
               <div class="review-stars">★★★★★</div>
@@ -923,8 +925,8 @@
               <div class="reviewer-meta">
                 <div class="reviewer-avatar">TA</div>
                 <div>
-                  <div class="reviewer-name">Tushar Agarawal</div>
-                  <div class="reviewer-badge">Local Guide · Prabhadevi Patient</div>
+                  <div class="reviewer-name"><span class="reviewer-name-text">Tushar Agarawal</span></div>
+                  <div class="reviewer-badge"><span class="rev-time-pill">3 months ago</span></div>
                 </div>
               </div>
               <div class="review-stars">★★★★★</div>

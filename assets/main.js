@@ -347,7 +347,7 @@
       });
     });
 
-    // Home / Treatments Smile Studio Tabs
+    // Home / Treatments Smile Studio Tabs with Background Preloading & Smooth Crossfade
     const mainViewport = document.getElementById('baViewport');
     const tabsWrap = document.getElementById('baCaseTabs');
     if (mainViewport && tabsWrap) {
@@ -364,9 +364,56 @@
       const durEl = document.getElementById('baCaseDuration');
       const longEl = document.getElementById('baCaseLongevity');
 
+      // Preload & decode all Before/After image pairs so tab switches are instant and synchronized
+      const preloadCache = new Map();
+      function ensureLoaded(url) {
+        if (!url) return Promise.resolve();
+        if (preloadCache.has(url)) return preloadCache.get(url);
+        const p = new Promise((resolve) => {
+          const img = new Image();
+          img.decoding = 'async';
+          img.onload = () => {
+            if (typeof img.decode === 'function') {
+              img.decode().catch(() => {}).finally(resolve);
+            } else {
+              resolve();
+            }
+          };
+          img.onerror = () => resolve();
+          img.src = url;
+        });
+        preloadCache.set(url, p);
+        return p;
+      }
+
+      // Eagerly warm cache right after initial paint
+      const warmAllPairs = () => {
+        dataset.forEach((item) => {
+          ensureLoaded(item.before);
+          ensureLoaded(item.after);
+        });
+      };
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(warmAllPairs, { timeout: 600 });
+      } else {
+        setTimeout(warmAllPairs, 120);
+      }
+
+      let switchToken = 0;
       tabsWrap.querySelectorAll('.ba-tab').forEach((btn, idx) => {
+        btn.addEventListener('pointerenter', () => {
+          const item = dataset[idx];
+          if (item) {
+            ensureLoaded(item.before);
+            ensureLoaded(item.after);
+          }
+        }, { passive: true });
+
         btn.addEventListener('click', () => {
+          if (btn.classList.contains('active')) return;
           const item = dataset[idx] || dataset[0];
+          const myToken = ++switchToken;
+
           tabsWrap.querySelectorAll('.ba-tab').forEach((b) => {
             b.classList.remove('active');
             b.setAttribute('aria-selected', 'false');
@@ -374,17 +421,34 @@
           btn.classList.add('active');
           btn.setAttribute('aria-selected', 'true');
 
-          if (beforeImg) beforeImg.src = item.before;
-          if (afterImg) afterImg.src = item.after;
-          if (beforeTag) beforeTag.textContent = item.beforeLabel;
-          if (afterTag) afterTag.textContent = item.afterLabel;
-          if (badgeEl) badgeEl.textContent = item.badge;
-          if (titleEl) titleEl.textContent = item.title;
-          if (descEl) descEl.textContent = item.desc;
-          if (durEl) durEl.textContent = item.duration;
-          if (longEl) longEl.textContent = item.longevity;
+          // Start smooth crossfade out while ensuring both images are decoded
+          mainViewport.classList.add('ba-switching');
+          const fadeOutWait = new Promise((r) => setTimeout(r, 140));
 
-          if (mainViewport._setSliderPos) mainViewport._setSliderPos(50);
+          Promise.all([
+            ensureLoaded(item.before),
+            ensureLoaded(item.after),
+            fadeOutWait
+          ]).then(() => {
+            if (myToken !== switchToken) return;
+            if (beforeImg) beforeImg.src = item.before;
+            if (afterImg) afterImg.src = item.after;
+            if (beforeTag) beforeTag.textContent = item.beforeLabel;
+            if (afterTag) afterTag.textContent = item.afterLabel;
+            if (badgeEl) badgeEl.textContent = item.badge;
+            if (titleEl) titleEl.textContent = item.title;
+            if (descEl) descEl.textContent = item.desc;
+            if (durEl) durEl.textContent = item.duration;
+            if (longEl) longEl.textContent = item.longevity;
+
+            if (mainViewport._setSliderPos) mainViewport._setSliderPos(50);
+
+            window.requestAnimationFrame(() => {
+              window.requestAnimationFrame(() => {
+                mainViewport.classList.remove('ba-switching');
+              });
+            });
+          });
         });
       });
     }
@@ -869,6 +933,8 @@
     const circle = document.getElementById('scrollRingCircle');
     const heroBg = document.querySelector('.hero-bg');
     const midParallax = document.querySelector('.parallax-section');
+    const mobileDock = document.querySelector('.mobile-bottom-bar');
+    const heroSection = document.querySelector('.hero, .page-hero, main > section:first-of-type');
     const circumference = 131.95;
 
     let ticking = false;
@@ -876,6 +942,14 @@
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const docHeight = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       const progress = Math.min(1, Math.max(0, scrollTop / docHeight));
+
+      // Pop up mobile bottom bar smoothly once scrolled past the halfway point of the hero section;
+      // hide smoothly when scrolling back above the halfway point toward the top of the page.
+      if (mobileDock) {
+        const heroHeight = heroSection ? heroSection.offsetHeight : 320;
+        const halfwayMark = Math.max(110, Math.round(heroHeight * 0.5));
+        mobileDock.classList.toggle('is-visible', scrollTop >= halfwayMark);
+      }
 
       if (btn) {
         btn.classList.toggle('visible', scrollTop > 280);
