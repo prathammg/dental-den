@@ -1,0 +1,5720 @@
+/* ==========================================================================
+   THE DENTAL DEN BY DR. PRAKRUTI SHAH — V3 CLEAN CLINICAL LUXURY DESIGN SYSTEM
+   3-Colour Palette: Deep Navy (#222968) · Logo Teal (#1D8A8E) · Soft Grey (#F5F7F8)
+   Background: Crisp White (#FFFFFF) · Flat 1px Borders · Option 3 Pill + Arrow Buttons
+   ========================================================================== */
+
+:root {
+  /* Core 3-Colour System + Crisp White */
+  --bg: #FFFFFF;
+  --bg-soft: #F5F7F8;
+  --bg-elevated: #FFFFFF;
+  --surface: #FFFFFF;
+  --surface-2: #F5F7F8;
+
+  /* Primary 1: Deep Navy */
+  --navy: #222968;
+  --navy-deep: #141942;
+  --navy-soft: rgba(34, 41, 104, 0.06);
+
+  /* Primary 2: Logo Teal */
+  --teal: #1D8A8E;
+  --teal-deep: #156B6E;
+  --teal-soft: rgba(29, 138, 142, 0.10);
+
+  /* Text Hierarchy */
+  --ink: #141936;
+  --ink-2: #4A526D;
+  --ink-3: #747C96;
+
+  /* Flat Clean Borders (Zero Heavy Shadows) */
+  --line: #E3E7EA;
+  --line-strong: #CBD2D9;
+
+  /* Compatibility Aliases for Subpages */
+  --accent: #1D8A8E;
+  --accent-2: #222968;
+  --gold: #1D8A8E;
+  --gold-soft: rgba(29, 138, 142, 0.10);
+
+  /* Typography */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Layout & Radii */
+  --container: 1260px;
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+  background: var(--bg);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--ink);
+  line-height: 1.62;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: 84px; /* Space for Floating Mobile Dock */
+  }
+}
+
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s var(--ease-out), background-color 0.2s var(--ease-out), border-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
+/* ==========================================================================
+   TYPOGRAPHY & SECTION HEADERS
+   ========================================================================== */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  background: var(--teal-soft);
+  padding: 6px 13px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 14px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+}
+
+h1, h2, h3, h4, .serif {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+
+h1 em, h2 em, h3 em, .serif em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--teal);
+}
+
+.section {
+  padding: 88px 0;
+  position: relative;
+  background: var(--bg);
+}
+
+.section-soft,
+.section.alt-bg {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: 56px 0;
+  }
+}
+
+/* Centred section headers: eyebrow, title, subtext and any controls/tabs stack in the middle */
+.section-header,
+.sec-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 22px;
+  margin-bottom: 44px;
+}
+
+.section-header-left,
+.sec-head > div {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.sec-head .lead {
+  margin: 0 auto;
+}
+
+.section-header .eyebrow,
+.sec-head .eyebrow {
+  justify-content: center;
+  text-align: center;
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .section-header .eyebrow,
+  .sec-head .eyebrow {
+    border-radius: 18px;
+    line-height: 1.5;
+  }
+
+  .section-header .eyebrow::before,
+  .sec-head .eyebrow::before {
+    display: none;
+  }
+}
+
+.section-title {
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.section-sub {
+  font-size: 1.02rem;
+  color: var(--ink-2);
+  max-width: 620px;
+  line-height: 1.65;
+}
+
+.section-header .section-sub {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   UNIVERSAL BUTTON SYSTEM — OPTION 3: PILL + ARROW CIRCLE (EDITORIAL LUXURY)
+   Strict Max of 2 Buttons Side-by-Side
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform 0.22s var(--ease-out), background-color 0.22s var(--ease-out), border-color 0.22s var(--ease-out), color 0.22s var(--ease-out);
+  white-space: nowrap;
+  text-decoration: none;
+  position: relative;
+}
+
+/* Hide any legacy inline SVG inside .btn-primary so only the clean Option 3 Arrow Circle shows */
+.btn-primary > svg {
+  display: none !important;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: #FFFFFF;
+  padding: 7px 7px 7px 22px;
+  min-height: 48px;
+  border: 1px solid var(--navy);
+}
+
+.btn-primary::after {
+  content: "↗";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.24s var(--ease-out), background-color 0.24s var(--ease-out);
+  flex-shrink: 0;
+}
+
+.btn-primary:hover {
+  background: var(--navy-deep);
+  border-color: var(--navy-deep);
+  transform: translateY(-2px);
+}
+
+.btn-primary:hover::after {
+  transform: rotate(45deg);
+  background: #229CA1;
+}
+
+/* White Pill + Teal Arrow Circle on Dark Hero / Navy CTA Cards */
+.btn-primary.on-dark,
+.hero .btn-primary,
+.cta-band-card .btn-primary,
+.parallax-card .btn-primary {
+  background: #FFFFFF;
+  color: var(--navy);
+  border-color: #FFFFFF;
+}
+
+.btn-primary.on-dark:hover,
+.hero .btn-primary:hover,
+.cta-band-card .btn-primary:hover,
+.parallax-card .btn-primary:hover {
+  background: var(--bg-soft);
+  color: var(--navy-deep);
+  transform: translateY(-2px);
+}
+
+/* Secondary / Ghost Button */
+.btn-ghost,
+.btn-secondary {
+  background: #FFFFFF;
+  color: var(--navy);
+  border: 1px solid var(--line-strong);
+  padding: 11px 22px;
+  min-height: 48px;
+}
+
+.btn-ghost > svg,
+.btn-secondary > svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.btn-ghost:hover,
+.btn-secondary:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  background: var(--bg-soft);
+  transform: translateY(-2px);
+}
+
+.hero .btn-ghost,
+.cta-band-card .btn-ghost,
+.parallax-card .btn-ghost {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(8px);
+}
+
+.hero .btn-ghost:hover,
+.cta-band-card .btn-ghost:hover,
+.parallax-card .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+/* Small Compact Button Variant */
+.btn-sm {
+  min-height: 38px;
+  padding: 5px 5px 5px 16px;
+  font-size: 0.82rem;
+  gap: 8px;
+}
+
+.btn-sm.btn-primary::after {
+  width: 26px;
+  height: 26px;
+  font-size: 0.82rem;
+}
+
+.btn-sm.btn-ghost,
+.btn-sm.btn-secondary {
+  padding: 7px 15px;
+  min-height: 38px;
+}
+
+/* Editorial Link with Arrow */
+.link-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--navy);
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid var(--teal);
+  transition: gap 0.2s var(--ease-out), color 0.2s var(--ease-out);
+}
+
+.link-editorial:hover {
+  color: var(--teal);
+  gap: 12px;
+}
+
+/* ==========================================================================
+   B1. TOP UTILITY BAR (VISIBLE ON DESKTOP, HIDDEN ON MOBILE)
+   ========================================================================== */
+.topbar {
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.78rem;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 1023px) {
+  .topbar {
+    display: none !important;
+  }
+}
+
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar-items {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.topbar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.topbar-item svg {
+  width: 14px;
+  height: 14px;
+  color: #5CE1E6;
+  flex-shrink: 0;
+}
+
+.topbar-item a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #27C97F;
+  box-shadow: 0 0 0 3px rgba(39, 201, 127, 0.22);
+  display: inline-block;
+}
+
+.rating-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 3px 11px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.rating-pill .stars {
+  color: #F6C453;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   STICKY HEADER & NAVIGATION
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 78px;
+  gap: 20px;
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand-logo img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-logo .logo-for-dark {
+  display: none !important;
+}
+
+.brand-logo .logo-for-light {
+  display: block !important;
+}
+
+@media (max-width: 640px) {
+  .nav-inner {
+    height: 68px;
+  }
+  .brand-logo img {
+    height: 42px;
+  }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (max-width: 1023px) {
+  .nav-links {
+    display: none;
+  }
+}
+
+.nav-link {
+  padding: 8px 13px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--teal);
+  background: var(--bg-soft);
+}
+
+/* Desktop Dropdown for Treatments */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 310px;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.2s var(--ease-out);
+  z-index: 950;
+}
+
+.nav-item-dropdown:hover .dropdown-menu,
+.nav-item-dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.dropdown-item:hover {
+  background: var(--bg-soft);
+}
+
+.dropdown-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--teal-soft);
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dropdown-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.dropdown-item strong {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.dropdown-item span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Hide legacy dark/light theme toggle button for clean white aesthetic */
+.theme-toggle {
+  display: none !important;
+}
+
+.nav-phone-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 15px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-strong);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: #FFFFFF;
+}
+
+.nav-phone-btn svg {
+  width: 15px;
+  height: 15px;
+  color: var(--teal);
+}
+
+.nav-phone-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+@media (max-width: 1180px) {
+  .nav-phone-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .nav-actions .btn-primary {
+    display: none;
+  }
+}
+
+.mobile-menu-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: #FFFFFF;
+  color: var(--navy);
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 1023px) {
+  .mobile-menu-btn {
+    display: inline-flex;
+  }
+}
+
+/* ==========================================================================
+   B5. UPGRADED CLEAN WHITE MOBILE SIDE MENU DRAWER
+   ========================================================================== */
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 25, 54, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 1100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s var(--ease-out), visibility 0.25s var(--ease-out);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mobile-drawer.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-drawer-panel {
+  width: min(370px, 90vw);
+  height: 100%;
+  background: #FFFFFF;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s var(--ease-out);
+  border-left: 1px solid var(--line);
+}
+
+.mobile-drawer.open .mobile-drawer-panel {
+  transform: translateX(0);
+}
+
+.drawer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.drawer-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 14px 0;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-nav-list a,
+.drawer-acc-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: left;
+}
+
+.mobile-nav-list a:hover,
+.drawer-acc-toggle:hover {
+  background: var(--bg-soft);
+  color: var(--teal);
+}
+
+.drawer-acc-toggle svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s var(--ease-out);
+}
+
+.drawer-acc-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.drawer-acc-panel {
+  display: none;
+  padding: 4px 0 8px 14px;
+  border-left: 2px solid var(--teal-soft);
+  margin-left: 14px;
+}
+
+.drawer-acc-panel.open {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.drawer-acc-panel a {
+  padding: 8px 12px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.drawer-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.drawer-quick-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg-soft);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.drawer-quick-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--teal);
+}
+
+/* ==========================================================================
+   C1. HERO SECTION — SEPARATE DESKTOP & MOBILE IMAGES + UNCOVERED SMILE
+   ========================================================================== */
+.hero {
+  position: relative;
+  background: var(--navy-deep);
+  color: #FFFFFF;
+  overflow: hidden;
+}
+
+.hero-stage {
+  position: relative;
+  min-height: clamp(610px, 41vw, 720px);
+  display: flex;
+  align-items: center;
+  background: #141942;
+}
+
+/* Desktop & Tablet Landscape Image (Full Forehead, Eyebrows, Eyes, Bright Teeth & Chin Visible) */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  background: #141942;
+}
+
+.hero-bg picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hero-bg img {
+  position: absolute;
+  left: 0;
+  top: -36px;
+  width: 100%;
+  height: calc(100% + 72px);
+  object-fit: cover;
+  object-position: center center;
+  will-change: transform;
+  transform: translate3d(0, var(--hero-parallax, 0px), 0);
+}
+
+/* Left-only gradient on Desktop/Tablet so her eyes, face, bright white teeth & chin remain 100% crystal-clear and uncovered */
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(20, 25, 66, 0.92) 0%,
+    rgba(20, 25, 66, 0.72) 28%,
+    rgba(20, 25, 66, 0.14) 40%,
+    rgba(20, 25, 66, 0.0) 47%
+  );
+  pointer-events: none;
+}
+
+.hero-content-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 64px 0;
+}
+
+/* Strictly constrain text to the left 45% on Desktop/Tablet so it NEVER touches the person's face or smile */
+.hero-copy {
+  max-width: 530px;
+  width: 45%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: rgba(29, 138, 142, 0.32);
+  border: 1px solid rgba(92, 225, 230, 0.45);
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: clamp(2.55rem, 4.1vw, 3.85rem);
+  color: #FFFFFF;
+  line-height: 1.07;
+  margin-bottom: 18px;
+}
+
+.hero-title em {
+  color: #6CE5E8;
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: 1.12rem;
+  color: rgba(255, 255, 255, 0.90);
+  line-height: 1.65;
+  margin-bottom: 28px;
+  max-width: 490px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.hero-actions .btn {
+  font-size: 0.96rem;
+  min-height: 52px;
+}
+
+/* Tablet Adjustments (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-stage {
+    min-height: 500px;
+  }
+  .hero-copy {
+    width: 46%;
+    max-width: 360px;
+  }
+  .hero-title {
+    font-size: 2.1rem;
+  }
+  .hero-sub {
+    font-size: 0.92rem;
+  }
+}
+
+/* Mobile Portrait Layout (< 768px):
+   Portrait image pushed higher to the top with 0% text over her face/teeth,
+   seamlessly blending into the compact headline + 2 buttons below! */
+@media (max-width: 767px) {
+  .hero-stage {
+    flex-direction: column;
+    min-height: auto;
+    background: #141942;
+  }
+
+  .hero-bg {
+    position: relative;
+    width: 100%;
+    height: 364px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #141942;
+  }
+
+  .hero-bg img {
+    position: absolute;
+    left: 0;
+    top: -18px;
+    width: 100%;
+    height: calc(100% + 66px);
+    object-fit: cover;
+    object-position: center 2%;
+    transform: translate3d(0, var(--hero-parallax, 0px), 0);
+  }
+
+  /* Seamless multi-stop bottom blend reaching 100% #141942 at 90% so the bottom border of the image is NEVER visible */
+  .hero-bg::after {
+    background: linear-gradient(
+      180deg,
+      rgba(20, 25, 66, 0.0) 0%,
+      rgba(20, 25, 66, 0.0) 48%,
+      rgba(20, 25, 66, 0.18) 59%,
+      rgba(20, 25, 66, 0.48) 70%,
+      rgba(20, 25, 66, 0.80) 81%,
+      #141942 90%,
+      #141942 100%
+    );
+  }
+
+  .hero-content-wrap {
+    margin-top: -42px;
+    padding: 0 0 32px;
+    background: #141942;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-copy {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-badge {
+    margin-bottom: 10px;
+    font-size: 0.68rem;
+  }
+
+  .hero-title {
+    font-size: 1.95rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    padding: 6px 6px 6px 14px;
+    font-size: 0.82rem;
+    min-height: 44px;
+  }
+
+  .hero-actions .btn-primary::after {
+    width: 28px;
+    height: 28px;
+    font-size: 0.82rem;
+  }
+
+  .hero-actions .btn-ghost {
+    padding: 8px 12px;
+  }
+}
+
+/* Below-Hero Clinical Info Strip + 4 Stat Counters (2 cols on mobile, 4 on desktop) */
+.hero-info-strip {
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0;
+}
+
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 767px) {
+  .stat-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+.stat-box {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+}
+
+.stat-box:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+.stat-num span {
+  color: var(--teal);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+@media (max-width: 767px) {
+  .stat-box {
+    padding: 13px 14px;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+  }
+}
+
+/* ==========================================================================
+   C2. BEFORE & AFTER INTERACTIVE TRANSFORMATION STUDIO
+   Smaller Tab Buttons + Dynamic Vanishing Before/After Badges
+   ========================================================================== */
+.ba-case-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ba-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-strong);
+  background: #FFFFFF;
+  color: var(--ink-2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s var(--ease-out);
+}
+
+.ba-tab span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--teal);
+}
+
+.ba-tab:hover {
+  border-color: var(--teal);
+  color: var(--navy);
+}
+
+.ba-tab.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #FFFFFF;
+}
+
+.ba-tab.active span {
+  color: #6CE5E8;
+}
+
+.ba-showcase {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+@media (max-width: 1023px) {
+  .ba-showcase {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.ba-stage-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ba-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  background: var(--bg-soft);
+  cursor: ew-resize;
+}
+
+.ba-img-after,
+.ba-img-before {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.ba-before-clip {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
+  will-change: clip-path;
+}
+
+.ba-tag {
+  position: absolute;
+  top: 14px;
+  z-index: 4;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.ba-tag.before {
+  left: 14px;
+  background: rgba(20, 25, 54, 0.84);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ba-tag.after {
+  right: 14px;
+  background: var(--teal);
+  color: #FFFFFF;
+}
+
+/* Dynamic vanishing state: each label glides out through its own side edge
+   (Before exits left, After exits right) — never upwards */
+.ba-tag.before.is-hidden {
+  opacity: 0;
+  transform: translateX(-130%);
+}
+
+.ba-tag.after.is-hidden {
+  opacity: 0;
+  transform: translateX(130%);
+}
+
+.ba-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos, 50%);
+  width: 2px;
+  background: #FFFFFF;
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ba-handle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ba-stage-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 6px 2px;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+
+.ba-detail-panel {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.ba-case-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ba-case-title {
+  font-size: 1.45rem;
+  color: var(--navy);
+  margin: 6px 0 8px;
+}
+
+.ba-case-desc {
+  font-size: 0.92rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+
+.ba-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.ba-metric-box {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.ba-metric-box small {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin-bottom: 2px;
+}
+
+.ba-metric-box strong {
+  font-size: 0.9rem;
+  color: var(--navy);
+}
+
+/* ==========================================================================
+   D3. SIGNATURE TREATMENTS GRID (WITH CRISP THUMBNAIL IMAGES)
+   ========================================================================== */
+.treatments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+@media (max-width: 1023px) {
+  .treatments-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .treatments-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.treat-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.22s var(--ease-out), transform 0.22s var(--ease-out);
+}
+
+.treat-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.treat-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+}
+
+.treat-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s var(--ease-out);
+}
+
+.treat-card:hover .treat-thumb img {
+  transform: scale(1.03);
+}
+
+.treat-num-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--navy);
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.treat-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.treat-Card-title,
+.treat-card h3 {
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.treat-card p {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.treat-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.treat-tag {
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.treat-foot {
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   A8 & C7. MERGED 60-SECOND SMILE FINDER (2 COLUMNS ON MOBILE)
+   ========================================================================== */
+.finder-integrated {
+  margin-top: 44px;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+@media (max-width: 767px) {
+  .finder-integrated {
+    padding: 20px 16px;
+  }
+}
+
+.finder-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 18px;
+}
+
+@media (max-width: 1023px) {
+  .finder-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.concern-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 767px) {
+  .concern-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+
+.concern-btn {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: all 0.2s var(--ease-out);
+}
+
+.concern-btn:hover {
+  border-color: var(--teal);
+  background: #FFFFFF;
+}
+
+.concern-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #FFFFFF;
+}
+
+.concern-btn .c-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+.concern-btn.active .c-num {
+  color: #6CE5E8;
+}
+
+.concern-btn strong {
+  font-size: 0.86rem;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.concern-btn.active strong {
+  color: #FFFFFF;
+}
+
+.concern-btn span {
+  font-size: 0.74rem;
+  color: var(--ink-2);
+}
+
+.concern-btn.active span {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.finder-output {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.finder-output h3 {
+  font-size: 1.3rem;
+  color: var(--navy);
+}
+
+.finder-output p {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+
+.finder-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.finder-meta-item {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+}
+
+.finder-meta-item small {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.finder-meta-item strong {
+  font-size: 0.84rem;
+  color: var(--navy);
+}
+
+/* ==========================================================================
+   C3 & C7. COMPLETE DIRECTORY OF ALL 20 TREATMENTS (4 COLS DESKTOP / 2 MOBILE)
+   ========================================================================== */
+.all20-wrap {
+  margin-top: 36px;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+@media (max-width: 767px) {
+  .all20-wrap {
+    padding: 20px 14px;
+  }
+}
+
+.all20-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.all20-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .all20-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .all20-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+
+.all20-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--navy);
+  transition: all 0.2s var(--ease-out);
+}
+
+.all20-item:hover {
+  border-color: var(--teal);
+  background: #FFFFFF;
+  color: var(--teal);
+  transform: translateY(-1px);
+}
+
+.all20-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .all20-item {
+    padding: 9px 10px;
+    font-size: 0.75rem;
+    gap: 6px;
+  }
+}
+
+/* ==========================================================================
+   C4. MID-PAGE PARALLEL VISUAL BREAK (OPTION 2: MACRO DENTAL ARTISTRY)
+   ========================================================================== */
+.parallax-section {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--navy-deep);
+  color: #FFFFFF;
+  padding: 72px 0;
+}
+
+/* Image layer extends 200px above and below the section so it can travel
+   freely (stronger, faster parallax) without ever exposing an edge */
+.parallax-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -200px;
+  bottom: -200px;
+  background: url('parallax-v3.webp') center / cover no-repeat;
+  transform: translate3d(0, var(--mid-parallax, 0px), 0);
+  will-change: transform;
+  z-index: 0;
+}
+
+@media (max-width: 1023px) {
+  .parallax-section {
+    padding: 52px 0;
+    min-height: 340px;
+  }
+}
+
+.parallax-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(16, 21, 56, 0.90) 0%,
+    rgba(16, 21, 56, 0.74) 55%,
+    rgba(16, 21, 56, 0.45) 100%
+  );
+}
+
+.parallax-card {
+  position: relative;
+  z-index: 2;
+  max-width: 660px;
+}
+
+.parallax-card h2 {
+  color: #FFFFFF;
+  font-size: clamp(1.85rem, 3.2vw, 2.7rem);
+  margin-bottom: 14px;
+}
+
+.parallax-card h2 em {
+  color: #6CE5E8;
+}
+
+.parallax-card p {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1rem;
+  margin-bottom: 24px;
+  max-width: 560px;
+}
+
+/* ==========================================================================
+   C5 & C7. DOCTOR & CLINIC SPLIT SECTION (2-COL HIGHLIGHTS ON MOBILE)
+   ========================================================================== */
+.doctor-split {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 44px;
+  align-items: center;
+}
+
+@media (max-width: 1023px) {
+  .doctor-split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.doctor-photo-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+}
+
+.doctor-photo-frame img {
+  width: 100%;
+  aspect-ratio: 4 / 4.6;
+  object-fit: cover;
+}
+
+.doctor-caption-bar {
+  background: var(--navy);
+  color: #FFFFFF;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.doctor-caption-bar strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+}
+
+.doctor-caption-bar span {
+  font-size: 0.78rem;
+  color: #6CE5E8;
+}
+
+.cred-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 22px 0 26px;
+}
+
+.cred-box {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+}
+
+.cred-box strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--navy);
+  margin-bottom: 3px;
+}
+
+.cred-box span {
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+
+@media (max-width: 767px) {
+  .cred-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .cred-box {
+    padding: 12px;
+  }
+  .cred-box strong {
+    font-size: 0.82rem;
+  }
+  .cred-box span {
+    font-size: 0.73rem;
+  }
+}
+
+/* ==========================================================================
+   C6. TESTIMONIALS HORIZONTAL CAROUSEL (3 CARDS DESKTOP / 1+PEEK MOBILE)
+   ========================================================================== */
+.reviews-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.carousel-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: #FFFFFF;
+  color: var(--navy);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s var(--ease-out);
+}
+
+.carousel-btn:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #FFFFFF;
+}
+
+.carousel-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.reviews-carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 40px) / 3);
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-bottom: 6px;
+  cursor: grab;
+}
+
+.reviews-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .reviews-carousel-track {
+    grid-auto-columns: calc((100% - 16px) / 2);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .reviews-carousel-track {
+    grid-auto-columns: 85%;
+    gap: 12px;
+  }
+}
+
+/* Static Grid for Dedicated reviews.html Page */
+.reviews-static-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 1023px) {
+  .reviews-static-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .reviews-static-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.review-card {
+  scroll-snap-align: start;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  transition: border-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+}
+
+.review-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.review-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.reviewer-meta {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.reviewer-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.reviewer-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--navy);
+}
+
+.reviewer-badge {
+  font-size: 0.73rem;
+  color: var(--ink-3);
+}
+
+.review-stars {
+  color: #F4B63D;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.review-quote {
+  font-size: 0.9rem;
+  color: var(--ink);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.review-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--teal);
+  background: var(--teal-soft);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.carousel-progress-wrap {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.carousel-progress-bar {
+  flex: 1;
+  height: 4px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.carousel-progress-fill {
+  height: 100%;
+  width: 25%;
+  background: var(--teal);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+/* ==========================================================================
+   D1. CLINICAL FAQ + VISIT & CONTACT SPLIT (100% RESPONSIVE)
+   ========================================================================== */
+.faq-contact-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+@media (max-width: 1023px) {
+  .faq-contact-split {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.faq-q {
+  width: 100%;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--navy);
+}
+
+.faq-q:hover {
+  color: var(--teal);
+}
+
+.faq-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  color: var(--teal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.22s var(--ease-out), background-color 0.22s var(--ease-out);
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--teal);
+  color: #FFFFFF;
+}
+
+.faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.faq-item.open .faq-a {
+  grid-template-rows: 1fr;
+}
+
+.faq-a-inner {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 20px 0;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  line-height: 1.68;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.28s ease, transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), padding 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item.open .faq-a-inner {
+  padding: 0 20px 20px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+@media (max-width: 640px) {
+  .contact-card {
+    padding: 20px 16px;
+  }
+}
+
+.contact-info-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+  .contact-info-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-info-box {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 13px 14px;
+}
+
+.contact-info-box small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 3px;
+}
+
+.contact-info-box strong {
+  font-size: 0.86rem;
+  color: var(--navy);
+  display: block;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-field.full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: var(--bg-soft);
+  color: var(--ink);
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  background: #FFFFFF;
+}
+
+/* ==========================================================================
+   SUBPAGE HERO & CONTENT UTILITIES (TREATMENT PAGES, ABOUT, CONTACT, REVIEWS)
+   ========================================================================== */
+.page-hero {
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+  padding: 56px 0;
+}
+
+.page-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 36px;
+  align-items: center;
+}
+
+@media (max-width: 1023px) {
+  .page-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.breadcrumb a:hover {
+  color: var(--teal);
+}
+
+.page-hero-visual {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #FFFFFF;
+}
+
+.page-hero-visual img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* Subpage Cards & Grids */
+.feature-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 1023px) {
+  .feature-grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .feature-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: border-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+}
+
+.feature-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.feature-card h3 {
+  font-size: 1.15rem;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+
+/* CTA Banner Card */
+.cta-band-card {
+  background: var(--navy);
+  color: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.cta-band-card h2 {
+  color: #FFFFFF;
+  font-size: clamp(1.65rem, 2.8vw, 2.3rem);
+  margin-bottom: 8px;
+}
+
+.cta-band-card p {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 560px;
+}
+
+@media (max-width: 767px) {
+  .cta-band-card {
+    padding: 28px 20px;
+  }
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  padding: 64px 0 36px;
+  color: var(--ink-2);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 32px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 1023px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.footer-col h4 {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 0.88rem;
+}
+
+.footer-links a:hover {
+  color: var(--teal);
+}
+
+.footer-bottom {
+  padding-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
+/* ==========================================================================
+   B2. MOBILE FLOATING ROUNDED BOTTOM DOCK (OPTION 3) + QUICK BOOKING SHEET
+   ========================================================================== */
+.mobile-bottom-bar {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .mobile-bottom-bar {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 990;
+    background: var(--navy);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius-pill);
+    padding: 6px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .mob-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 7px 4px;
+    border-radius: var(--radius-pill);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.68rem;
+    font-weight: 600;
+  }
+
+  .mob-tab svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .mob-tab.primary {
+    background: var(--teal);
+    color: #FFFFFF;
+    font-weight: 700;
+  }
+}
+
+/* Quick Booking Bottom Sheet Pop-Up */
+.quick-book-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 25, 54, 0.52);
+  backdrop-filter: blur(4px);
+  z-index: 1200;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s var(--ease-out);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.quick-book-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.quick-book-sheet {
+  width: 100%;
+  max-width: 500px;
+  background: #FFFFFF;
+  border-radius: 24px 24px 0 0;
+  padding: 24px 20px 28px;
+  border-top: 1px solid var(--line);
+  transform: translateY(100%);
+  transition: transform 0.28s var(--ease-out);
+}
+
+@media (min-width: 640px) {
+  .quick-book-backdrop {
+    align-items: center;
+  }
+  .quick-book-sheet {
+    border-radius: 24px;
+    border: 1px solid var(--line);
+  }
+}
+
+.quick-book-backdrop.open .quick-book-sheet {
+  transform: translateY(0);
+}
+
+.quick-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ==========================================================================
+   B3 & B4. SCROLL-TO-TOP WITH PROGRESS RING + DESKTOP FLOATING WHATSAPP
+   ========================================================================== */
+.scroll-top-btn {
+  position: fixed;
+  right: 22px;
+  bottom: 92px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--line-strong);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 980;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.22s var(--ease-out);
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.scroll-top-btn svg.progress-ring {
+  position: absolute;
+  inset: -1px;
+  width: 46px;
+  height: 46px;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.scroll-top-btn .arrow-up {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+@media (max-width: 1023px) {
+  .scroll-top-btn {
+    right: 16px;
+    bottom: 82px;
+    width: 42px;
+    height: 42px;
+  }
+  .scroll-top-btn svg.progress-ring {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* Desktop Floating WhatsApp Button (Hidden on Mobile because Dock has WhatsApp) */
+.float-wa-desktop {
+  position: fixed;
+  right: 22px;
+  bottom: 28px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 980;
+  border: 2px solid #FFFFFF;
+  transition: transform 0.2s var(--ease-out);
+}
+
+.float-wa-desktop:hover {
+  transform: translateY(-3px) scale(1.04);
+}
+
+.float-wa-desktop svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 1023px) {
+  .float-wa-desktop {
+    display: none !important;
+  }
+}
+
+/* Subtle Scroll Reveal Animations (A7) */
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
+}
+
+.js-ready .reveal:not(.in-view) {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+/* ==========================================================================
+   V3 SUBPAGE UNIFIED LAYOUT & COMPONENT CLASSES
+   Ensures all 11 pages share 100% consistent V3 typography, borders & buttons
+   ========================================================================== */
+.wrap {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: 0 16px;
+  }
+}
+
+.blk {
+  padding: 80px 0;
+  background: var(--bg);
+}
+
+.blk.alt {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 767px) {
+  .blk {
+    padding: 52px 0;
+  }
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--navy);
+  line-height: 1.15;
+}
+
+.lead {
+  font-size: 1.04rem;
+  color: var(--ink-2);
+  max-width: 720px;
+  line-height: 1.65;
+}
+
+.page-hero h1 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: var(--navy);
+  margin-bottom: 14px;
+  max-width: 840px;
+}
+
+/* Subpage Buttons Mapped to V3 Option 3 Pill + Arrow Circle */
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Strict max 2 buttons side-by-side anywhere */
+.hero-ctas > *:nth-child(n+3) {
+  display: none !important;
+}
+
+.btn-wa,
+.btn-outline {
+  background: #FFFFFF;
+  color: var(--navy);
+  border: 1px solid var(--line-strong);
+  padding: 11px 22px;
+  min-height: 48px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-wa:hover,
+.btn-outline:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  background: var(--bg-soft);
+  transform: translateY(-2px);
+}
+
+/* Subpage Split Grid & Credentials */
+.doc-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 1023px) {
+  .doc-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.doc-creds {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.cred-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+
+.blk.alt .cred-row {
+  background: #FFFFFF;
+}
+
+.cred-ico {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cred-row h4 {
+  font-family: var(--font-sans);
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.cred-row p {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  line-height: 1.58;
+}
+
+.doc-photo-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.doc-photo-card .ph img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.doc-caption {
+  padding: 18px 22px;
+  background: var(--navy);
+  color: #FFFFFF;
+}
+
+.doc-caption h3 {
+  font-size: 1.1rem;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.doc-caption p {
+  font-size: 0.8rem;
+  color: #6CE5E8;
+}
+
+/* Subpage Interactive Before & After Studio (.ba-grid / .ba-stage) */
+.ba-grid {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 32px;
+  align-items: center;
+}
+
+@media (max-width: 1023px) {
+  .ba-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.ba-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.ba-stage-wrap {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+}
+
+.ba-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  cursor: ew-resize;
+  background: var(--bg-soft);
+}
+
+.ba-stage .ba-after,
+.ba-stage .ba-before-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.ba-stage .ba-before-wrap {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
+  will-change: clip-path;
+}
+
+.ba-stage > .ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos, 50%);
+  width: 2px;
+  height: 100%;
+  border-radius: 0;
+  border: none;
+  background: #FFFFFF;
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.ba-stage > .ba-handle::after {
+  content: "↔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ba-caption-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 6px 2px;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+
+/* Subpage Treatments Grid (.treat-grid) & Process Steps */
+.treat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 1023px) {
+  .treat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .treat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.treat-grid .treat-card {
+  padding: 24px;
+  gap: 12px;
+}
+
+.tc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.tc-ico {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--teal-soft);
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.tc-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--teal);
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.tc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-top: 8px;
+}
+
+.tc-link:hover {
+  color: var(--teal);
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 1023px) {
+  .process-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 11px;
+  border-radius: var(--radius-pill);
+  background: var(--navy);
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.step-card h3 {
+  font-size: 1.1rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.step-card p {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+
+/* Comparison Table & Pill Items */
+.compare-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #FFFFFF;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.compare-table th {
+  background: var(--navy);
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.compare-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pill-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.pill-item .num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+/* Subpage Review Cards & Contact Page Layout */
+.rev-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 1023px) {
+  .rev-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .rev-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rev-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.rev-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.rev-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rev-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.rev-meta h4 {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.rev-meta span {
+  font-size: 0.74rem;
+  color: var(--ink-3);
+}
+
+.rev-stars {
+  color: #F4B63D;
+  font-size: 0.85rem;
+}
+
+.rev-text {
+  font-size: 0.88rem;
+  color: var(--ink);
+  line-height: 1.62;
+}
+
+.rev-reply {
+  background: var(--bg-soft);
+  border-left: 3px solid var(--teal);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 1023px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info-card,
+.form-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-ico {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--teal-soft);
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 0.86rem;
+}
+
+.hours-table td {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: var(--bg-soft);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.map-frame {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.map-frame iframe {
+  width: 100%;
+  height: 380px;
+  border: 0;
+  display: block;
+}
+
+/* ==========================================================================
+   CARD HOVER — GENTLE, ULTRA-SMOOTH BORDER GLOW
+   No lifting, no zooming: the border softly warms to teal and a faint halo
+   fades in and out over 0.7s. (Opacity/transform stay in the list so the
+   scroll-reveal animation keeps working on cards.)
+   ========================================================================== */
+.stat-box,
+.treat-card,
+.concern-btn,
+.all20-item,
+.cred-box,
+.review-card,
+.rev-card,
+.contact-card,
+.contact-info-box,
+.info-card,
+.feature-card,
+.step-card,
+.pill-item,
+.faq-item,
+.doc-photo-card,
+.ba-metric-box {
+  transition:
+    opacity 0.55s var(--ease-out),
+    transform 0.55s var(--ease-out),
+    border-color 0.7s var(--ease-out),
+    background-color 0.7s var(--ease-out),
+    box-shadow 0.7s var(--ease-out);
+}
+
+.stat-box:hover,
+.treat-card:hover,
+.concern-btn:hover,
+.all20-item:hover,
+.cred-box:hover,
+.review-card:hover,
+.rev-card:hover,
+.contact-card:hover,
+.contact-info-box:hover,
+.info-card:hover,
+.feature-card:hover,
+.step-card:hover,
+.pill-item:hover,
+.faq-item:hover,
+.doc-photo-card:hover,
+.ba-metric-box:hover {
+  border-color: rgba(29, 138, 142, 0.6);
+  box-shadow:
+    0 0 0 1px rgba(29, 138, 142, 0.16),
+    0 0 26px rgba(29, 138, 142, 0.14);
+}
+
+/* Remove the old lift / zoom on hover (reveal state is untouched) */
+.stat-box:hover,
+.treat-card:hover,
+.all20-item:hover,
+.review-card:hover,
+.feature-card:hover {
+  transform: translateY(0);
+}
+
+.treat-card:hover .treat-thumb img {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-box,
+  .treat-card,
+  .concern-btn,
+  .all20-item,
+  .cred-box,
+  .review-card,
+  .rev-card,
+  .contact-card,
+  .contact-info-box,
+  .info-card,
+  .feature-card,
+  .step-card,
+  .pill-item,
+  .faq-item,
+  .doc-photo-card,
+  .ba-metric-box {
+    transition-duration: 0.01ms;
+  }
+}
+
+/* ==========================================================================
+   V8 — SECTION HEADERS WITHOUT PILLS, CENTRED CARD TITLES & SUBTEXTS, COMPACT CARDS
+   ========================================================================== */
+/* Remove the small label pill above every section title & card title */
+main .eyebrow,
+.page-hero .eyebrow,
+.ba-case-badge {
+  display: none !important;
+}
+
+/* One-line section subtext */
+.section-header .section-sub,
+.sec-head .lead,
+.section-sub,
+.lead {
+  max-width: 780px;
+  font-size: 0.98rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Center all section titles & in-section headers */
+.section-title,
+.h2,
+.parallax-card,
+.parallax-card h2,
+.parallax-card p,
+.cta-band-card,
+.cta-band-card h2,
+.cta-band-card p,
+.doctor-split > div:last-child > .section-title,
+.faq-contact-split > div:first-child > .section-title {
+  text-align: center;
+}
+
+.parallax-card {
+  margin: 0 auto;
+}
+
+.parallax-card p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.parallax-card .hero-actions,
+.doctor-split .hero-actions,
+.ba-detail-panel .hero-actions,
+.finder-output .hero-actions,
+.cta-band-card .hero-actions {
+  justify-content: center;
+}
+
+.finder-integrated > div:first-child,
+.all20-head {
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 6px !important;
+}
+
+/* Titles & descriptions inside all cards are centred */
+.treat-card h3,
+.treat-card p,
+.feature-card h3,
+.feature-card p,
+.step-card h3, .step-card h4, .step-card p,
+.cred-box, .cred-box h3, .cred-box h4, .cred-box strong, .cred-box span,
+.rev-card h3,
+.info-card h2, .info-card h3,
+.contact-card h3, .contact-info-box h3,
+.form-card h2, .form-card h3,
+.ba-case-title, .ba-case-desc,
+.ba-metric-box, .ba-metric-box small, .ba-metric-box strong,
+.finder-output h3, .finder-output p,
+.finder-meta-item, .finder-meta-item small, .finder-meta-item strong,
+.concern-btn, .concern-btn .c-num, .concern-btn strong, .concern-btn span,
+.doc-photo-card h3,
+.pill-item, .pill-item h3, .pill-item h4,
+.stat-box, .stat-box .stat-num, .stat-box .stat-label {
+  text-align: center;
+  align-items: center;
+}
+
+/* Slightly more compact cards */
+.treat-body { padding: 18px 18px 16px; }
+.treat-card h3 { font-size: 1.12rem; }
+.treat-card p { font-size: 0.86rem; }
+.treat-tags { justify-content: center; }
+.feature-card, .step-card, .rev-card, .review-card { padding: 20px; }
+.feature-card h3 { font-size: 1.05rem; }
+.stat-box { padding: 13px 15px; }
+.ba-detail-panel { padding: 22px; text-align: center; }
+.ba-case-title { font-size: 1.25rem; margin-bottom: 8px; }
+.ba-case-desc { font-size: 0.88rem; margin-bottom: 14px; }
+.cred-box { padding: 14px; }
+.finder-output { padding: 20px; text-align: center; }
+.concern-btn { padding: 12px; }
+
+@media (max-width: 767px) {
+  .ba-detail-panel { padding: 18px 14px; }
+  .ba-case-title { font-size: 1.12rem; }
+  .ba-case-desc { font-size: 0.83rem; }
+  .ba-metrics-grid { gap: 8px; margin: 12px 0 16px; }
+  .ba-metric-box { padding: 10px 8px; }
+  .ba-metric-box strong { font-size: 0.8rem; }
+  .ba-detail-panel .hero-actions .btn { padding: 0 14px; font-size: 0.8rem; min-height: 42px; }
+  .ba-stage-foot { flex-direction: column; text-align: center; gap: 4px; font-size: 0.72rem; }
+}
+
+/* ==========================================================================
+   V8 — BEFORE / AFTER: CLEAN SINGLE CARD + SIMPLE PILLS + PROGRESSIVE DARKENING
+   ========================================================================== */
+.ba-showcase {
+  display: block;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ba-detail-panel,
+.ba-stage-foot {
+  display: none !important;
+}
+
+.ba-stage-card {
+  padding: 12px;
+  border-radius: var(--radius-lg);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Option B — Thumbnail Photo Strip under the Before/After Slider */
+.ba-thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.ba-thumb-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: #FFFFFF;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    border-color 0.45s var(--ease-out),
+    box-shadow 0.45s var(--ease-out),
+    background-color 0.45s var(--ease-out);
+}
+
+.ba-thumb-btn img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.65);
+  opacity: 0.72;
+  transition: filter 0.45s var(--ease-out), opacity 0.45s var(--ease-out);
+}
+
+.ba-thumb-btn span {
+  display: block;
+  width: 100%;
+  padding: 7px 6px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.35s var(--ease-out), background-color 0.35s var(--ease-out);
+}
+
+.ba-thumb-btn:hover {
+  border-color: rgba(29, 138, 142, 0.55);
+  box-shadow: 0 0 18px rgba(29, 138, 142, 0.14);
+}
+
+.ba-thumb-btn:hover img {
+  filter: saturate(0.9);
+  opacity: 0.92;
+}
+
+.ba-thumb-btn.active {
+  background: #FFFFFF;
+  border-color: var(--teal);
+  box-shadow:
+    0 0 0 1px rgba(29, 138, 142, 0.2),
+    0 0 20px rgba(29, 138, 142, 0.22);
+}
+
+.ba-thumb-btn.active img {
+  filter: none;
+  opacity: 1;
+}
+
+.ba-thumb-btn.active span {
+  color: var(--navy);
+  font-weight: 700;
+  background: rgba(29, 138, 142, 0.08);
+}
+
+@media (max-width: 767px) {
+  .ba-thumbs {
+    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+    gap: 7px;
+    margin-top: 10px;
+  }
+  .ba-thumb-btn {
+    border-radius: 9px;
+  }
+  .ba-thumb-btn span {
+    font-size: 0.68rem;
+    padding: 5px 3px;
+  }
+}
+
+.ba-tag {
+  top: 14px;
+  padding: 6px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity 0.12s linear, transform 0.12s linear;
+}
+.ba-tag.before { left: 14px; }
+.ba-tag.after { right: 14px; }
+
+.ba-shade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #0B0F2A;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+  transition: opacity 0.12s linear;
+}
+.ba-shade-before { left: 0; right: 0; }
+.ba-shade-after { left: var(--pos, 50%); right: 0; }
+
+@media (max-width: 767px) {
+  .ba-tag { top: 10px; padding: 5px 11px; font-size: 0.68rem; }
+  .ba-tag.before { left: 10px; }
+  .ba-tag.after { right: 10px; }
+}
+
+/* ==========================================================================
+   V8 — DARK FOOTER WITH SUBTLE TOOTH-LINE SVG PATTERN
+   ========================================================================== */
+.site-footer {
+  position: relative;
+  background-color: #0E1233;
+  background-image:
+    radial-gradient(ellipse at 15% 0%, rgba(29, 138, 142, 0.18), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-opacity='0.05' stroke-width='1.2'%3E%3Cpath d='M30 26c-6 0-10 4-10 11 0 8 3 13 5 21 1 4 2 8 5 8s3-6 5-10c1-2 2-3 3-3s2 1 3 3c2 4 2 10 5 10s4-4 5-8c2-8 5-13 5-21 0-7-4-11-10-11-4 0-6 2-8 2s-4-2-8-2z'/%3E%3Ccircle cx='78' cy='78' r='2'/%3E%3Ccircle cx='78' cy='18' r='1.2'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: auto, 96px 96px;
+  border-top: none;
+  color: rgba(255, 255, 255, 0.68);
+}
+.site-footer strong { color: #FFFFFF; }
+.site-footer .footer-col h4 { color: #FFFFFF; }
+.site-footer .footer-links a { color: rgba(255, 255, 255, 0.72); transition: color 0.3s var(--ease-out); }
+.site-footer .footer-links a:hover { color: #6CE5E8; }
+.site-footer .footer-grid { border-bottom-color: rgba(255, 255, 255, 0.1); }
+.site-footer .footer-bottom { color: rgba(255, 255, 255, 0.5); }
+.site-footer p[style*="var(--teal)"] { color: #6CE5E8 !important; }
+
+/* ==========================================================================
+   V10 — DARK REVIEWS SECTION ON HOME PAGE
+   ========================================================================== */
+#reviews.section-dark {
+  position: relative;
+  background-color: #0E1233;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(27, 122, 130, 0.22), transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(14, 90, 96, 0.16), transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-opacity='0.045' stroke-width='1.2'%3E%3Cpath d='M30 26c-6 0-10 4-10 11 0 8 3 13 5 21 1 4 2 8 5 8s3-6 5-10c1-2 2-3 3-3s2 1 3 3c2 4 2 10 5 10s4-4 5-8c2-8 5-13 5-21 0-7-4-11-10-11-4 0-6 2-8 2s-4-2-8-2z'/%3E%3Ccircle cx='78' cy='78' r='2'/%3E%3Ccircle cx='78' cy='18' r='1.2'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: auto, auto, 96px 96px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+}
+
+#reviews.section-dark .section-title {
+  color: #FFFFFF;
+}
+
+#reviews.section-dark .section-title em {
+  color: #6CE5E8;
+  font-style: italic;
+}
+
+#reviews.section-dark .section-sub {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+#reviews.section-dark .carousel-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+}
+
+#reviews.section-dark .carousel-btn:hover {
+  background: #6CE5E8;
+  border-color: #6CE5E8;
+  color: #0E1233;
+}
+
+#reviews.section-dark .btn-ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #FFFFFF;
+}
+
+#reviews.section-dark .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #6CE5E8;
+  color: #6CE5E8;
+}
+
+#reviews.section-dark .review-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+#reviews.section-dark .review-card:hover {
+  transform: none !important;
+  border-color: rgba(108, 229, 232, 0.85);
+  box-shadow:
+    0 0 0 1px rgba(108, 229, 232, 0.32),
+    0 0 28px rgba(108, 229, 232, 0.26);
+}
+
+#reviews.section-dark .reviewer-name {
+  color: var(--navy);
+}
+
+#reviews.section-dark .reviewer-badge {
+  color: var(--ink-3);
+}
+
+#reviews.section-dark .reviewer-avatar {
+  background: var(--navy);
+  color: #FFFFFF;
+  border: none;
+}
+
+#reviews.section-dark .review-stars {
+  color: #F4B63D;
+}
+
+#reviews.section-dark .review-quote {
+  color: var(--ink);
+}
+
+#reviews.section-dark .review-tag {
+  background: var(--teal-soft);
+  color: var(--teal);
+  border: 1px solid rgba(29, 138, 142, 0.2);
+}
+
+#reviews.section-dark .carousel-progress-bar {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+#reviews.section-dark .carousel-progress-fill {
+  background: #6CE5E8;
+}
+
+#reviews.section-dark .link-editorial {
+  color: #6CE5E8;
+}
+
+#reviews.section-dark .link-editorial:hover {
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   V10 — DARK PAGE HERO WITH DENTAL SVG PATTERN ON ALL SUBPAGES
+   ========================================================================== */
+.page-hero {
+  position: relative;
+  background-color: #0E1233 !important;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(27, 122, 130, 0.28), transparent 60%),
+    radial-gradient(ellipse at 85% 100%, rgba(14, 90, 96, 0.2), transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-opacity='0.055' stroke-width='1.2'%3E%3Cpath d='M30 26c-6 0-10 4-10 11 0 8 3 13 5 21 1 4 2 8 5 8s3-6 5-10c1-2 2-3 3-3s2 1 3 3c2 4 2 10 5 10s4-4 5-8c2-8 5-13 5-21 0-7-4-11-10-11-4 0-6 2-8 2s-4-2-8-2z'/%3E%3Ccircle cx='78' cy='78' r='2'/%3E%3Ccircle cx='78' cy='18' r='1.2'/%3E%3C/g%3E%3C/svg%3E") !important;
+  background-size: auto, auto, 96px 96px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+  padding: 64px 0 68px !important;
+}
+
+.page-hero h1 {
+  color: #FFFFFF !important;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  margin-bottom: 14px;
+}
+
+.page-hero h1 .serif,
+.page-hero h1 em {
+  color: #6CE5E8 !important;
+  font-style: italic;
+}
+
+.page-hero .lead,
+.page-hero .section-sub,
+.page-hero p {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.page-hero .breadcrumb {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.page-hero .breadcrumb a {
+  color: rgba(255, 255, 255, 0.78);
+  transition: color 0.2s ease;
+}
+
+.page-hero .breadcrumb a:hover {
+  color: #6CE5E8;
+}
+
+.page-hero .breadcrumb span {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.page-hero .breadcrumb span:last-child {
+  color: #6CE5E8;
+  font-weight: 500;
+}
+
+.page-hero .hero-ctas,
+.page-hero .hero-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.page-hero .btn-ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #FFFFFF;
+}
+
+.page-hero .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #6CE5E8;
+  color: #6CE5E8;
+}
+
+.page-hero-visual {
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* ==========================================================================
+   V10 — CENTRALIZED HEADINGS & SUBTEXTS ON SUBPAGES (ABOUT, CONTACT, REVIEWS)
+   ========================================================================== */
+.page-hero .wrap:not(.page-hero-grid) {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-hero .wrap:not(.page-hero-grid) .breadcrumb {
+  justify-content: center;
+}
+
+.page-hero .wrap:not(.page-hero-grid) h1 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 860px;
+}
+
+.page-hero .wrap:not(.page-hero-grid) .lead,
+.page-hero .wrap:not(.page-hero-grid) .section-sub,
+.page-hero .wrap:not(.page-hero-grid) p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 760px;
+}
+
+.page-hero .wrap:not(.page-hero-grid) .hero-ctas,
+.page-hero .wrap:not(.page-hero-grid) .hero-actions {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-hero .btn-primary {
+  background: var(--teal) !important;
+  border-color: var(--teal) !important;
+  color: #FFFFFF !important;
+}
+
+.page-hero .btn-primary:hover {
+  background: #6CE5E8 !important;
+  border-color: #6CE5E8 !important;
+  color: #0E1233 !important;
+}
+
+/* ==========================================================================
+   V11 — GREEN VERIFIED TICK ICON & SUBTLE GLOW ONLY ON ALL REVIEW CARDS
+   ========================================================================== */
+.review-card:hover,
+.rev-card:hover {
+  transform: none !important;
+}
+
+.reviewer-name,
+.rev-meta h4 {
+  display: block;
+  line-height: 1.3;
+}
+
+.reviewer-name::after,
+.rev-meta h4::after {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  vertical-align: -2.5px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Ccircle cx='10' cy='10' r='10' fill='%2316A34A'/%3E%3Cpath d='M5.8 10.3L8.6 13.1L14.3 7.4' stroke='%23FFFFFF' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* ==========================================================================
+   V11 — INTERACTIVE SMILE & TREATMENT FINDER (3 DESIGN OPTIONS: A, B, C)
+   ========================================================================== */
+#smile-finder-section .finder-integrated {
+  margin-top: 0;
+  padding: 36px 32px;
+  border-radius: 24px;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  box-shadow: 0 14px 40px rgba(14, 18, 51, 0.05);
+}
+
+.finder-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 28px;
+}
+
+.finder-integrated.finder-opt-a .concern-grid,
+.finder-integrated.finder-opt-c .concern-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-content: stretch;
+}
+
+.concern-btn {
+  position: relative;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--bg-soft);
+  border: 1.5px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+  text-align: left !important;
+  gap: 8px;
+  cursor: pointer;
+  transition: border-color 0.25s var(--ease-out), background-color 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+}
+
+.concern-btn strong,
+.concern-btn span,
+.concern-btn .c-num {
+  text-align: left !important;
+}
+
+.concern-btn-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.concern-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(29, 138, 142, 0.12);
+  color: var(--teal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s var(--ease-out);
+}
+
+.concern-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.concern-check {
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.22s var(--ease-out);
+}
+
+.concern-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  box-shadow: 0 10px 24px rgba(14, 18, 51, 0.18);
+}
+
+.concern-btn.active .concern-icon {
+  background: rgba(108, 229, 232, 0.18);
+  color: #6CE5E8;
+}
+
+.concern-btn.active .concern-check {
+  opacity: 1;
+  transform: scale(1);
+  background: #16A34A;
+}
+
+/* Output Card Layout */
+.finder-output {
+  padding: 0 !important;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@keyframes finderPulseFade {
+  0% { opacity: 0.45; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.finder-output.finder-fade {
+  animation: finderPulseFade 0.32s var(--ease-out);
+}
+
+.finder-output-media {
+  position: relative;
+  height: 168px;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.finder-output-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.finder-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14,18,51,0.15) 0%, rgba(14,18,51,0.68) 100%);
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.finder-match-pill {
+  background: #16A34A;
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.finder-doc-pill {
+  background: rgba(14, 18, 51, 0.78);
+  backdrop-filter: blur(6px);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.finder-output-body {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  justify-content: space-between;
+}
+
+/* Inner View Switcher Tabs */
+.finder-view-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  background: var(--bg-soft);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
+.finder-view-tab {
+  padding: 7px 8px;
+  border-radius: 7px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out);
+}
+
+.finder-view-tab.active {
+  background: #FFFFFF;
+  color: var(--navy);
+  box-shadow: 0 2px 6px rgba(14, 18, 51, 0.08);
+}
+
+.finder-view-pane {
+  display: none;
+  text-align: center;
+}
+
+.finder-view-pane.active {
+  display: block;
+}
+
+.finder-view-pane h3 {
+  font-size: 1.22rem;
+  color: var(--navy);
+  margin: 0 0 8px;
+}
+
+.finder-view-pane p {
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  line-height: 1.58;
+  margin-bottom: 14px;
+}
+
+.finder-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.finder-meta-item {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 8px;
+  text-align: center;
+}
+
+.finder-meta-item small {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--ink-3);
+  margin-bottom: 2px;
+}
+
+.finder-meta-item strong {
+  font-size: 0.78rem;
+  color: var(--navy);
+}
+
+/* 3-Step Roadmap View */
+.finder-subhead {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.finder-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.finder-step-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 12px;
+}
+
+.finder-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--navy);
+  color: #6CE5E8;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.finder-step-row strong {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+
+.finder-step-row p {
+  font-size: 0.76rem !important;
+  color: var(--ink-2);
+  margin: 0 !important;
+  line-height: 1.4 !important;
+  text-align: left !important;
+}
+
+/* Symptom Checklist View */
+.finder-check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.finder-check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.f-tick {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #16A34A;
+  color: #FFFFFF;
+  font-size: 0.68rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   DESIGN OPTION B: HORIZONTAL ICON PILL BAR + CINEMA SHOWCASE CARD
+   -------------------------------------------------------------------------- */
+.finder-integrated.finder-opt-b .finder-grid {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.finder-integrated.finder-opt-b .concern-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.finder-integrated.finder-opt-b .concern-btn {
+  align-items: center !important;
+  text-align: center !important;
+  padding: 12px 10px;
+}
+
+.finder-integrated.finder-opt-b .concern-btn-top {
+  justify-content: center;
+}
+
+.finder-integrated.finder-opt-b .concern-btn .c-num,
+.finder-integrated.finder-opt-b .concern-btn span,
+.finder-integrated.finder-opt-b .concern-check {
+  display: none;
+}
+
+.finder-integrated.finder-opt-b .concern-btn strong {
+  text-align: center !important;
+  font-size: 0.8rem;
+}
+
+.finder-integrated.finder-opt-b .finder-output {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  align-items: stretch;
+}
+
+.finder-integrated.finder-opt-b .finder-output-media {
+  height: auto;
+  min-height: 300px;
+}
+
+/* --------------------------------------------------------------------------
+   DESIGN OPTION C: DARK NAVY LUXURY DIAGNOSTIC CONSOLE
+   -------------------------------------------------------------------------- */
+.finder-integrated.finder-opt-c {
+  background-color: #0E1233 !important;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(27, 122, 130, 0.25), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-opacity='0.045' stroke-width='1.2'%3E%3Cpath d='M30 26c-6 0-10 4-10 11 0 8 3 13 5 21 1 4 2 8 5 8s3-6 5-10c1-2 2-3 3-3s2 1 3 3c2 4 2 10 5 10s4-4 5-8c2-8 5-13 5-21 0-7-4-11-10-11-4 0-6 2-8 2s-4-2-8-2z'/%3E%3Ccircle cx='78' cy='78' r='2'/%3E%3Ccircle cx='78' cy='18' r='1.2'/%3E%3C/g%3E%3C/svg%3E") !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #FFFFFF;
+}
+
+.finder-integrated.finder-opt-c .finder-header .section-title {
+  color: #FFFFFF !important;
+}
+
+.finder-integrated.finder-opt-c .finder-header .section-title em {
+  color: #6CE5E8 !important;
+}
+
+.finder-integrated.finder-opt-c .finder-header .section-sub {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.finder-integrated.finder-opt-c .concern-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+}
+
+.finder-integrated.finder-opt-c .concern-btn strong {
+  color: #FFFFFF;
+}
+
+.finder-integrated.finder-opt-c .concern-btn span {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.finder-integrated.finder-opt-c .concern-btn .c-num {
+  color: #6CE5E8;
+}
+
+.finder-integrated.finder-opt-c .concern-icon {
+  background: rgba(108, 229, 232, 0.14);
+  color: #6CE5E8;
+}
+
+.finder-integrated.finder-opt-c .concern-btn.active {
+  background: rgba(27, 122, 130, 0.32);
+  border-color: #6CE5E8;
+  box-shadow: 0 0 24px rgba(108, 229, 232, 0.2);
+}
+
+@media (max-width: 1023px) {
+  .finder-integrated.finder-opt-b .concern-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .finder-integrated.finder-opt-b .finder-output {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  #smile-finder-section .finder-integrated {
+    padding: 22px 16px;
+  }
+  .finder-integrated.finder-opt-a .concern-grid,
+  .finder-integrated.finder-opt-c .concern-grid {
+    grid-template-columns: 1fr;
+  }
+  .finder-integrated.finder-opt-b .concern-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .finder-meta {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   V12 — BESPOKE SVG CLINICAL ILLUSTRATIONS IN SMILE FINDER (.finder-illus)
+   ========================================================================== */
+.finder-illus {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0E1233;
+}
+
+.finder-illus svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@keyframes fiFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes fiTwinkle {
+  0%, 100% { opacity: 0.95; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.finder-illus .fi-float {
+  animation: fiFloat 4s ease-in-out infinite;
+}
+
+.finder-illus .fi-twinkle {
+  animation: fiTwinkle 2.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.finder-illus .fi-d2 { animation-delay: 0.8s; }
+.finder-illus .fi-d3 { animation-delay: 1.5s; }
+
+/* ==========================================================================
+   V12 — ELEGANT SLIDING CLINICAL HIGHLIGHTS MARQUEE BAR (.luxury-ticker-bar)
+   ========================================================================== */
+.luxury-ticker-bar {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(90deg, #0B0F2B 0%, #141A47 50%, #0B0F2B 100%);
+  border-top: 1px solid rgba(108, 229, 232, 0.18);
+  border-bottom: 1px solid rgba(108, 229, 232, 0.18);
+  padding: 14px 0;
+  z-index: 15;
+}
+
+.luxury-ticker-bar::before,
+.luxury-ticker-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 72px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.luxury-ticker-bar::before {
+  left: 0;
+  background: linear-gradient(90deg, #0B0F2B 0%, rgba(11, 15, 43, 0) 100%);
+}
+
+.luxury-ticker-bar::after {
+  right: 0;
+  background: linear-gradient(270deg, #0B0F2B 0%, rgba(11, 15, 43, 0) 100%);
+}
+
+.luxury-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: luxuryTickerScroll 42s linear infinite;
+}
+
+.luxury-ticker-bar:hover .luxury-ticker-track {
+  animation-play-state: paused;
+}
+
+.luxury-ticker-group {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  padding-right: 36px;
+  white-space: nowrap;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.86);
+  letter-spacing: 0.01em;
+}
+
+.ticker-item strong {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.ticker-gem {
+  font-style: normal;
+  color: #6CE5E8;
+  font-size: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(108, 229, 232, 0.14);
+  border: 1px solid rgba(108, 229, 232, 0.3);
+}
+
+@keyframes luxuryTickerScroll {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* ==========================================================================
+   V12 — TREATMENT AT A GLANCE SUMMARY CARD (.glance-card)
+   ========================================================================== */
+.glance-card {
+  background: #FFFFFF;
+  border: 1.5px solid var(--line);
+  border-radius: 22px;
+  padding: 28px 26px;
+  box-shadow: 0 14px 36px rgba(14, 18, 51, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.glance-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.glance-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: #0E1233;
+  color: #6CE5E8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.glance-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.glance-head small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+  margin-bottom: 2px;
+}
+
+.glance-head h3 {
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin: 0;
+}
+
+.glance-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.glance-list > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.glance-list dt {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.glance-list dd {
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-align: right;
+}
+
+.glance-foot {
+  margin: 0;
+  padding-top: 8px;
+  font-size: 0.78rem;
+  color: var(--teal);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ==========================================================================
+   V12 — UNIFIED TREATMENTS HUB DIRECTORY (.dept-block / .dept-filter-bar)
+   ========================================================================== */
+.dept-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.dept-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--bg-soft);
+  border: 1.5px solid var(--line);
+  color: var(--navy);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s var(--ease-out);
+}
+
+.dept-filter-btn span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(14, 18, 51, 0.08);
+  color: var(--ink-2);
+}
+
+.dept-filter-btn:hover {
+  border-color: var(--teal);
+  box-shadow: 0 0 16px rgba(29, 138, 142, 0.14);
+}
+
+.dept-filter-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #FFFFFF;
+}
+
+.dept-filter-btn.active span {
+  background: rgba(108, 229, 232, 0.2);
+  color: #6CE5E8;
+}
+
+.dept-block {
+  background: #FFFFFF;
+  border: 1.5px solid var(--line);
+  border-radius: 24px;
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 30px rgba(14, 18, 51, 0.04);
+}
+
+.dept-block:last-child {
+  margin-bottom: 0;
+}
+
+.dept-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 20px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.dept-head-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 720px;
+}
+
+.dept-badge-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #0E1233;
+  color: #6CE5E8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.dept-badge-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dept-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+
+.dept-head h3 {
+  font-size: 1.32rem;
+  color: var(--navy);
+  margin: 0 0 4px;
+}
+
+.dept-head p {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.dept-guide-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--bg-soft);
+  border: 1.5px solid var(--line-strong);
+  color: var(--navy);
+  font-size: 0.84rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: border-color 0.22s var(--ease-out), box-shadow 0.22s var(--ease-out), color 0.22s var(--ease-out);
+}
+
+.dept-guide-link:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  box-shadow: 0 0 18px rgba(29, 138, 142, 0.16);
+}
+
+.dept-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.dept-item-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--bg-soft);
+  border: 1.5px solid var(--line);
+  transition: border-color 0.22s var(--ease-out), box-shadow 0.22s var(--ease-out), background-color 0.22s var(--ease-out);
+}
+
+.dept-item-card:hover {
+  background: #FFFFFF;
+  border-color: var(--teal);
+  box-shadow: 0 0 22px rgba(29, 138, 142, 0.14);
+}
+
+.dept-item-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dept-item-top .num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #0E1233;
+  color: #6CE5E8;
+  flex-shrink: 0;
+}
+
+.dept-item-top strong {
+  font-size: 0.95rem;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.dept-arrow {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--teal);
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.dept-item-card:hover .dept-arrow {
+  opacity: 1;
+}
+
+.dept-item-card p {
+  margin: 0;
+  font-size: 0.83rem;
+  color: var(--ink-2);
+  line-height: 1.52;
+}
+
+@media (max-width: 767px) {
+  .dept-block {
+    padding: 20px 16px;
+  }
+  .dept-head-left {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .dept-guide-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   V13 — COMPLETE 78 GOOGLE REVIEWS DIRECTORY, PAGINATION & OWNER REPLIES
+   ========================================================================== */
+.reviews-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.rev-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: var(--bg-soft);
+  border: 1.5px solid var(--line);
+  color: var(--navy);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), background-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
+}
+
+.rev-filter-btn span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(14, 18, 51, 0.08);
+  color: var(--ink-2);
+}
+
+.rev-filter-btn:hover {
+  border-color: var(--teal);
+  box-shadow: 0 0 14px rgba(29, 138, 142, 0.14);
+}
+
+.rev-filter-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #FFFFFF;
+}
+
+.rev-filter-btn.active span {
+  background: rgba(108, 229, 232, 0.22);
+  color: #6CE5E8;
+}
+
+.reviews-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  margin-bottom: 22px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+}
+
+.reviews-showing-text strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.showing-cat-pill {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(29, 138, 142, 0.12);
+  color: var(--teal);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.reviews-per-page-note {
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  color: var(--ink-3);
+}
+
+/* Enhanced Review Card Metadata & Owner Reply Block */
+.review-rating-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.review-star-num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--navy);
+  background: rgba(244, 182, 61, 0.18);
+  padding: 1px 6px;
+  border-radius: 6px;
+}
+
+.rev-time-pill {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.review-summary-box {
+  margin-top: 10px;
+  padding: 9px 12px;
+  background: var(--bg-soft);
+  border: 1px dashed var(--line-strong);
+  border-radius: 10px;
+  font-size: 0.79rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+.review-summary-box p {
+  margin: 2px 0 0;
+}
+
+.review-summary-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--teal);
+}
+
+.review-star-only-box {
+  padding: 12px 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.review-star-only-box p {
+  margin: 6px 0 0;
+  font-size: 0.84rem;
+  color: var(--ink-2);
+}
+
+.star-only-pill {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #B45309;
+  background: rgba(244, 182, 61, 0.2);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.review-card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.review-owner-reply {
+  background: var(--bg-soft);
+  border-left: 3px solid var(--teal);
+  padding: 10px 12px;
+  border-radius: 0 10px 10px 0;
+  font-size: 0.79rem;
+  color: var(--ink-2);
+  line-height: 1.52;
+}
+
+.owner-reply-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.owner-reply-head strong {
+  color: var(--navy);
+  font-size: 0.76rem;
+}
+
+.owner-reply-time {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--ink-3);
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+
+.review-owner-reply p {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+/* Subtle Glow Hover on Light Page Review Cards (Zero Lift) */
+.reviews-static-grid .review-card:hover {
+  transform: none !important;
+  border-color: var(--teal);
+  box-shadow: 0 0 24px rgba(29, 138, 142, 0.16);
+}
+
+/* Pagination Controls */
+.reviews-pagination {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.page-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--line-strong);
+  color: var(--navy);
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out);
+}
+
+.page-nav-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.page-nav-btn:hover:not(:disabled) {
+  border-color: var(--teal);
+  color: var(--teal);
+  box-shadow: 0 0 16px rgba(29, 138, 142, 0.16);
+}
+
+.page-nav-btn:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.page-num-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  border: 1.5px solid var(--line);
+  color: var(--navy);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out);
+}
+
+.page-num-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.page-num-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #6CE5E8;
+  box-shadow: 0 4px 14px rgba(14, 18, 51, 0.2);
+}
+
+@media (max-width: 640px) {
+  .reviews-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .showing-cat-pill {
+    margin-left: 0;
+    margin-top: 6px;
+  }
+}
+
+.link-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  white-space: normal;
+  flex-wrap: wrap;
+}
+
+.link-editorial svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.treatment-reviews-sec .section-header-split {
+  margin-bottom: 28px;
+}
+
+.treatment-reviews-sec .reviews-controls {
+  margin-top: 14px;
+}
+
+/* ==========================================================================
+   V16 — SUBTLE PAGE-OPEN FADE-IN (CSS-ONLY, ZERO JS, NO EXTRA REQUESTS)
+   - Uses opacity-only on main so position:fixed elements (mobile dock & drawer)
+     never suffer transform-containing-block bugs on iOS Safari or Android Chrome
+   ========================================================================== */
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+body > main {
+  animation: pageFadeIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.28s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body > main {
+    animation: none !important;
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   V16 — COMPACT "NOT SURE WHICH TREATMENT" CARDS (NO SUBTEXT, 2-COL MOBILE)
+   ========================================================================== */
+#smile-finder-section .concern-btn {
+  justify-content: center;
+  gap: 14px;
+}
+
+#smile-finder-section .concern-btn strong {
+  font-size: 1.02rem;
+  line-height: 1.32;
+}
+
+@media (max-width: 767px) {
+  .finder-integrated.finder-opt-a .concern-grid,
+  .finder-integrated.finder-opt-c .concern-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px;
+  }
+
+  #smile-finder-section .concern-btn {
+    padding: 12px;
+    gap: 8px;
+    border-radius: 14px;
+    min-width: 0;
+  }
+
+  #smile-finder-section .concern-btn .c-num {
+    display: none;
+  }
+
+  #smile-finder-section .concern-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+  }
+
+  #smile-finder-section .concern-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  #smile-finder-section .concern-btn strong {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+}
+
+/* ==========================================================================
+   V16 — GRADIENT MOBILE BOTTOM DOCK
+   ========================================================================== */
+@media (max-width: 1023px) {
+  .mobile-bottom-bar {
+    background: linear-gradient(115deg, #0E1233 0%, #1A2160 52%, #0F5A63 100%);
+    border: 1px solid rgba(108, 229, 232, 0.22);
+    box-shadow:
+      0 12px 30px rgba(8, 11, 36, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .mob-tab.primary {
+    background: linear-gradient(135deg, #1D8A8E 0%, #2BB3B1 100%);
+    box-shadow: 0 4px 14px rgba(29, 138, 142, 0.45);
+  }
+}
+
+/* ==========================================================================
+   V17 — FULL MOBILE & CROSS-DEVICE RESPONSIVENESS OVERHAUL
+   - Eliminates right-side gap on zoom-out across Android & iPhone (all 10 pages)
+   - Fixes overflowing buttons, grids, FAQ, Contact form, Parallax, Smile Finder,
+     Doctor section, subpage heroes, and persistent mobile bottom dock
+   ========================================================================== */
+
+/* 1. Root Viewport Containment (Preserves sticky header while clipping off-canvas elements) */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
+
+main,
+section,
+.site-footer,
+.page-hero,
+.parallax-section,
+.blk {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.container,
+.wrap {
+  width: 100%;
+  max-width: var(--container-max, 1280px);
+  box-sizing: border-box;
+}
+
+/* 2. Prevent Closed Mobile Drawer Panel (translateX(100%)) from Expanding Viewport Width */
+.mobile-drawer {
+  overflow: hidden !important;
+  max-width: 100vw !important;
+}
+
+.mobile-drawer:not(.open) {
+  pointer-events: none;
+}
+
+.mobile-drawer:not(.open) .mobile-drawer-panel {
+  visibility: hidden;
+}
+
+/* 3. Sleek, Compact Subpage Hero Banners (Shorter Subtext, Clean Height) */
+.page-hero {
+  padding: 46px 0 50px !important;
+}
+
+.page-hero h1 {
+  font-size: clamp(1.75rem, 3.2vw, 2.65rem) !important;
+  line-height: 1.16 !important;
+  margin-bottom: 10px !important;
+}
+
+.page-hero .lead,
+.page-hero .section-sub,
+.page-hero p {
+  font-size: 0.92rem !important;
+  line-height: 1.55 !important;
+  max-width: 620px !important;
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 767px) {
+  .page-hero {
+    padding: 30px 0 34px !important;
+  }
+
+  .page-hero .breadcrumb {
+    font-size: 0.72rem;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(1.48rem, 6.2vw, 1.92rem) !important;
+    margin-bottom: 8px !important;
+  }
+
+  .page-hero .lead,
+  .page-hero .section-sub,
+  .page-hero p {
+    font-size: 0.84rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* 4. Tablet & Mobile Grid Containment (<= 1023px):
+      Replace 1fr with minmax(0, 1fr) so wide children never push sections wider than 100vw */
+@media (max-width: 1023px) {
+  .doctor-split,
+  .faq-contact-split,
+  .contact-grid,
+  .doc-grid,
+  .finder-grid,
+  .ba-showcase {
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .doctor-split > *,
+  .faq-contact-split > *,
+  .contact-grid > *,
+  .doc-grid > *,
+  .finder-grid > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Persistent Mobile Bottom Bar: strictly bounded to viewport on Android & iPhone */
+  .mobile-bottom-bar {
+    left: 10px !important;
+    right: 10px !important;
+    bottom: max(10px, env(safe-area-inset-bottom, 10px)) !important;
+    width: auto !important;
+    max-width: min(460px, calc(100vw - 20px)) !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    padding: 5px !important;
+    gap: 4px !important;
+  }
+
+  .mob-tab {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 7px 2px !important;
+    font-size: 0.66rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
+
+/* 5. Phone Viewport Fixes (<= 767px) for All Sections & Subpages */
+@media (max-width: 767px) {
+  .container,
+  .wrap {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Ensure any standalone .btn also never exceeds container width on mobile */
+  .btn {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    white-space: normal !important;
+    height: auto !important;
+    min-height: 44px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Stack all action button pairs cleanly at 100% width so they never overflow
+     in Hero, Parallax, Smile Finder, Doctor section, Contact form, or CTA bands */
+  .hero-actions,
+  .hero-ctas,
+  .parallax-card .hero-actions,
+  .finder-output .hero-actions,
+  .doctor-split .hero-actions,
+  .contact-card .hero-actions,
+  .cta-band-card .hero-actions,
+  .cta-band .hero-ctas {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .hero-actions .btn,
+  .hero-ctas .btn,
+  .parallax-card .hero-actions .btn,
+  .finder-output .hero-actions .btn,
+  .doctor-split .hero-actions .btn,
+  .contact-card .hero-actions .btn,
+  .cta-band-card .hero-actions .btn,
+  .cta-band .hero-ctas .btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: normal !important;
+    padding: 12px 16px !important;
+    min-height: 46px !important;
+    height: auto !important;
+    line-height: 1.3 !important;
+    font-size: 0.86rem !important;
+  }
+
+  /* Keep primary button arrow icon neat when centered on mobile */
+  .hero-actions .btn-primary,
+  .hero-ctas .btn-primary {
+    justify-content: space-between !important;
+    padding: 8px 8px 8px 18px !important;
+  }
+
+  /* Mid-page Parallax Section & Card */
+  .parallax-section {
+    padding: 48px 0 !important;
+    min-height: auto !important;
+  }
+
+  .parallax-card {
+    padding: 26px 18px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 20px !important;
+  }
+
+  .parallax-card h2 {
+    font-size: clamp(1.42rem, 6vw, 1.8rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  .parallax-card p {
+    font-size: 0.88rem !important;
+    margin-bottom: 18px !important;
+  }
+
+  /* "Not sure which treatment you need?" (#smile-finder-section) */
+  #smile-finder-section .finder-integrated {
+    padding: 20px 14px !important;
+    border-radius: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .finder-output {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .finder-output-body {
+    padding: 16px 14px 18px !important;
+    min-width: 0 !important;
+  }
+
+  .finder-media-overlay {
+    padding: 10px 12px !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .finder-view-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .finder-view-tab {
+    font-size: 0.71rem !important;
+    padding: 7px 4px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .finder-meta {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  /* "Calm, unhurried dentistry" (#about-doctor / .doctor-split) */
+  .doctor-photo-stack,
+  .doc-photo-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .doctor-credentials-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .cred-box {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 12px 10px !important;
+    word-break: break-word !important;
+  }
+
+  /* FAQ Section & Contact Form Section (#contact / .faq-contact-split & contact.html) */
+  .faq-list,
+  .faq-item,
+  .faq-q,
+  .faq-a,
+  .faq-a-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .faq-q {
+    padding: 15px 14px !important;
+    gap: 10px !important;
+    font-size: 0.92rem !important;
+  }
+
+  .faq-q span:first-child {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .contact-card,
+  .info-card,
+  .form-card {
+    padding: 20px 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .form-grid,
+  .form-row,
+  .contact-info-list,
+  .treat-grid,
+  .process-steps,
+  .reviews-static-grid,
+  .rev-grid,
+  .dept-items-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .form-field,
+  .field,
+  .contact-info-box,
+  .info-row,
+  .info-row > div {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+  }
+
+  input,
+  select,
+  textarea,
+  .form-control,
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    text-overflow: ellipsis;
+  }
+
+  .hours-table {
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    font-size: 0.78rem !important;
+  }
+
+  .hours-table td {
+    word-break: break-word !important;
+    padding: 7px 4px !important;
+  }
+
+  /* Comparison tables on treatment subpages */
+  .compare-table {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Reviews carousel progress footer on homepage & all 7 treatment subpages */
+  .carousel-progress-wrap {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .link-editorial {
+    white-space: normal !important;
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .review-card {
+    max-width: calc(100vw - 32px) !important;
+    box-sizing: border-box !important;
+  }
+}
