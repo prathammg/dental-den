@@ -222,18 +222,18 @@
 
     // Progressive shading layers: the side that is being closed darkens in
     // proportion to how far the handle has travelled from the centre.
-    const beforeLayer = viewport.querySelector('.ba-before-clip, .ba-before-wrap');
     let shadeBefore = viewport.querySelector('.ba-shade-before');
     let shadeAfter = viewport.querySelector('.ba-shade-after');
-    if (!shadeBefore && beforeLayer) {
+    const refNode = viewport.querySelector('.ba-tag, .ba-divider');
+    if (!shadeBefore) {
       shadeBefore = document.createElement('div');
       shadeBefore.className = 'ba-shade ba-shade-before';
-      beforeLayer.appendChild(shadeBefore);
+      viewport.insertBefore(shadeBefore, refNode || null);
     }
     if (!shadeAfter) {
       shadeAfter = document.createElement('div');
       shadeAfter.className = 'ba-shade ba-shade-after';
-      viewport.insertBefore(shadeAfter, beforeLayer ? beforeLayer.nextSibling : viewport.firstChild);
+      viewport.insertBefore(shadeAfter, refNode || null);
     }
 
     function setSliderPos(pct) {
@@ -347,15 +347,13 @@
       });
     });
 
-    // Home / Treatments Smile Studio Tabs with Background Preloading & Smooth Crossfade
+    // Home / Treatments Smile Studio Tabs with Pre-Rendered Stacked Layers & Smooth Crossfade
     const mainViewport = document.getElementById('baViewport');
     const tabsWrap = document.getElementById('baCaseTabs');
     if (mainViewport && tabsWrap) {
       const isPrpPage = window.location.pathname.includes('hair-prp');
       const dataset = isPrpPage ? prpCases : smileCases;
 
-      const beforeImg = document.getElementById('baBeforeImg');
-      const afterImg = document.getElementById('baAfterImg');
       const beforeTag = document.getElementById('baBeforeTag') || mainViewport.querySelector('.ba-tag.before');
       const afterTag = document.getElementById('baAfterTag') || mainViewport.querySelector('.ba-tag.after');
       const badgeEl = document.getElementById('baCaseBadge');
@@ -364,55 +362,43 @@
       const durEl = document.getElementById('baCaseDuration');
       const longEl = document.getElementById('baCaseLongevity');
 
-      // Preload & decode all Before/After image pairs so tab switches are instant and synchronized
-      const preloadCache = new Map();
-      function ensureLoaded(url) {
-        if (!url) return Promise.resolve();
-        if (preloadCache.has(url)) return preloadCache.get(url);
-        const p = new Promise((resolve) => {
-          const img = new Image();
-          img.decoding = 'async';
-          img.onload = () => {
-            if (typeof img.decode === 'function') {
-              img.decode().catch(() => {}).finally(resolve);
-            } else {
-              resolve();
-            }
-          };
-          img.onerror = () => resolve();
-          img.src = url;
-        });
-        preloadCache.set(url, p);
-        return p;
-      }
+      // Build pre-decoded stacked layers inside #baViewport so both Before & After images
+      // of every case are already decoded in the DOM and crossfade simultaneously as one unit
+      if (!mainViewport.querySelector('.ba-case-layer')) {
+        const oldAfter = document.getElementById('baAfterImg');
+        const oldClip = mainViewport.querySelector('.ba-before-clip');
+        const refEl = mainViewport.querySelector('.ba-shade, .ba-tag, .ba-divider');
 
-      // Eagerly warm cache right after initial paint
-      const warmAllPairs = () => {
-        dataset.forEach((item) => {
-          ensureLoaded(item.before);
-          ensureLoaded(item.after);
+        dataset.forEach((item, idx) => {
+          const layer = document.createElement('div');
+          layer.className = 'ba-case-layer' + (idx === 0 ? ' active' : '');
+          layer.setAttribute('data-case-idx', String(idx));
+          layer.innerHTML = `
+            <img src="${item.after}" class="ba-img-after" alt="${item.title} — After" decoding="async" loading="eager">
+            <div class="ba-before-clip">
+              <img src="${item.before}" class="ba-img-before" alt="${item.title} — Before" decoding="async" loading="eager">
+            </div>
+          `;
+          mainViewport.insertBefore(layer, refEl || null);
         });
-      };
-      if ('requestIdleCallback' in window) {
-        window.requestIdleCallback(warmAllPairs, { timeout: 600 });
-      } else {
-        setTimeout(warmAllPairs, 120);
-      }
 
-      let switchToken = 0;
-      tabsWrap.querySelectorAll('.ba-tab').forEach((btn, idx) => {
-        btn.addEventListener('pointerenter', () => {
-          const item = dataset[idx];
-          if (item) {
-            ensureLoaded(item.before);
-            ensureLoaded(item.after);
+        if (oldAfter) oldAfter.remove();
+        if (oldClip) oldClip.remove();
+
+        // Force eager decode of all layers' Before & After images right away
+        mainViewport.querySelectorAll('.ba-case-layer img').forEach((img) => {
+          if (typeof img.decode === 'function') {
+            img.decode().catch(() => {});
           }
-        }, { passive: true });
+        });
+      }
 
+      const caseLayers = Array.from(mainViewport.querySelectorAll('.ba-case-layer'));
+
+      tabsWrap.querySelectorAll('.ba-tab').forEach((btn, idx) => {
         btn.addEventListener('click', () => {
           if (btn.classList.contains('active')) return;
           const item = dataset[idx] || dataset[0];
-          const myToken = ++switchToken;
 
           tabsWrap.querySelectorAll('.ba-tab').forEach((b) => {
             b.classList.remove('active');
@@ -421,34 +407,19 @@
           btn.classList.add('active');
           btn.setAttribute('aria-selected', 'true');
 
-          // Start smooth crossfade out while ensuring both images are decoded
-          mainViewport.classList.add('ba-switching');
-          const fadeOutWait = new Promise((r) => setTimeout(r, 140));
-
-          Promise.all([
-            ensureLoaded(item.before),
-            ensureLoaded(item.after),
-            fadeOutWait
-          ]).then(() => {
-            if (myToken !== switchToken) return;
-            if (beforeImg) beforeImg.src = item.before;
-            if (afterImg) afterImg.src = item.after;
-            if (beforeTag) beforeTag.textContent = item.beforeLabel;
-            if (afterTag) afterTag.textContent = item.afterLabel;
-            if (badgeEl) badgeEl.textContent = item.badge;
-            if (titleEl) titleEl.textContent = item.title;
-            if (descEl) descEl.textContent = item.desc;
-            if (durEl) durEl.textContent = item.duration;
-            if (longEl) longEl.textContent = item.longevity;
-
-            if (mainViewport._setSliderPos) mainViewport._setSliderPos(50);
-
-            window.requestAnimationFrame(() => {
-              window.requestAnimationFrame(() => {
-                mainViewport.classList.remove('ba-switching');
-              });
-            });
+          caseLayers.forEach((layer, lIdx) => {
+            layer.classList.toggle('active', lIdx === idx);
           });
+
+          if (beforeTag) beforeTag.textContent = item.beforeLabel;
+          if (afterTag) afterTag.textContent = item.afterLabel;
+          if (badgeEl) badgeEl.textContent = item.badge;
+          if (titleEl) titleEl.textContent = item.title;
+          if (descEl) descEl.textContent = item.desc;
+          if (durEl) durEl.textContent = item.duration;
+          if (longEl) longEl.textContent = item.longevity;
+
+          if (mainViewport._setSliderPos) mainViewport._setSliderPos(50);
         });
       });
     }

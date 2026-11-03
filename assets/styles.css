@@ -5724,45 +5724,55 @@ section,
    & SINGLE-LINE REVIEWER NAME WITH GUARANTEED GREEN CHECKMARK
    ========================================================================== */
 
-/* 1. Mobile Bottom Bar: Hidden on initial load; glides up smoothly once scrolled
-      past the halfway mark of the hero section, and hides smoothly on return to top */
+/* 1. Mobile Bottom Bar: Hidden on initial load; fades in & rises smoothly once scrolled
+      past the halfway mark of the hero section, and fades out smoothly on return to top */
 @media (max-width: 1023px) {
   .mobile-bottom-bar {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transform: translate3d(0, calc(100% + 26px), 0);
+    transform: translate3d(0, 22px, 0) scale(0.96);
+    filter: blur(3px);
     transition:
-      transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-      visibility 0.38s;
-    will-change: transform, opacity;
+      opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0.65s;
+    will-change: opacity, transform, filter;
   }
 
   .mobile-bottom-bar.is-visible {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0px);
   }
 }
 
-/* 2. Before / After Studio Smooth Crossfade Transition (Home & Hair PRP pages) */
-.ba-viewport .ba-img-after,
-.ba-viewport .ba-img-before {
+/* 2. Before / After Studio Stacked Case Layers (Simultaneous Smooth Crossfade) */
+.ba-case-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  transform: scale(1.018);
+  pointer-events: none;
   transition:
-    opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.28s ease;
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
-.ba-viewport.ba-switching .ba-img-after,
-.ba-viewport.ba-switching .ba-img-before {
-  opacity: 0.14;
-  transform: scale(1.012);
-  filter: blur(2px);
-  transition-duration: 0.14s;
+.ba-case-layer.active {
+  z-index: 2;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ba-shade-before {
+  left: 0 !important;
+  right: calc(100% - var(--pos, 50%)) !important;
 }
 
 /* 3. All Review Cards: Single-Line Name (Ellipsis if Long) + Adjacent Green Checkmark
